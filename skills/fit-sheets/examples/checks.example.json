@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "original_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "allowed_cells": [
+    "Лист!F1"
+  ],
+  "required_cells": [
+    "Лист!F1"
+  ],
+  "arithmetic": [
+    {
+      "name": "Время блока, секунды",
+      "operation": "duration",
+      "inputs": {
+        "sets": "Лист!B1",
+        "reps": "Лист!B2",
+        "seconds_per_rep": "Лист!B3",
+        "sides": "Лист!B4",
+        "rest_seconds": "Лист!B5",
+        "rest_count": "Лист!B6",
+        "transition_seconds": "Лист!B7"
+      },
+      "result": "Лист!B8"
+    }
+  ],
+  "transitions": [
+    {
+      "name": "Лестница амплитуды",
+      "require_regression": true,
+      "states": [
+        {
+          "id": "1",
+          "kind": "base",
+          "values": {
+            "amplitude": "Лист!C1",
+            "reps": "Лист!C4"
+          }
+        },
+        {
+          "id": "2",
+          "kind": "progression",
+          "changed_parameter": "amplitude",
+          "reason": "План проверки большей амплитуды при сохранении качества",
+          "values": {
+            "amplitude": "Лист!C2",
+            "reps": "Лист!C5"
+          }
+        },
+        {
+          "id": "3",
+          "kind": "regression",
+          "changed_parameter": "amplitude",
+          "reason": "Условие учебного кейса: прежняя амплитуда переносится лучше",
+          "values": {
+            "amplitude": "Лист!C3",
+            "reps": "Лист!C6"
+          }
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "cell": "Лист!F1",
+      "status": "planned"
+    }
+  ]
+}

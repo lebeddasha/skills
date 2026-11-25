@@ -1,0 +1,6 @@
+interface:
+  display_name: "fit-sheets"
+  short_description: "Excel, история клиентов и сценарии фитнес-курса"
+  default_prompt: "Используй $fit-sheets: заполни приложенный Excel по заданию и истории клиентов, сохрани оригинал и проверь дозировки."
+policy:
+  allow_implicit_invocation: true
